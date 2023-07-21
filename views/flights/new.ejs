@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<form action="/flights" method="POST" autocomplete="off">
+<select name="airline">
+    <option value="American">American</option>
+    <option value="Southwest">Southwest</option>
+    <option value="United">United</option>
+</select>
+<select name="airport">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+</select>
+<input name ="flightNo" type="number">
+<input name="departs" type="date">
+<button type="submit">Save flight</button>
+</form>
+
+
+<%- include('../partials/footer') %>
+

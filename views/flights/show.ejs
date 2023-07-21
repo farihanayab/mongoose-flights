@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+<section id="show-page"></section>
+<h2></h2>
+<h3>FlightNo <%= flight.flightNo %></h3>
+<h3>Airline <%= flight.airline %></h3>
+<h3>Airport <%= flight.airport %></h3>
+<h3>Departs <%= flight.departs%></h3>
+<form
+  id="Add-Destination-form"
+  method="POST"
+  action="/flights/<%= flight._id%>"
+>
+  <label>Destination</label>
+    <select name="airport">
+      <option value="AUS">AUS</option>
+       <option value="DFW">DFW</option>
+      <option value="DEN">DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+    <input name="arrival" type="datetime-local" />
+    <input type="submit" value="Add Destination" />
+  </label>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <h3>Airport</h3>
+      <h3>Arrival</h3>
+    </tr>
+  </thead>
+  <tbody>
+    <% flight.destinations.forEach(destination => { %> 
+      <%= destination.airport %> 
+        <%= destination.arrival %> 
+     <% }) %>
+  </tbody>
+</table>
+<% tickets.forEach(ticket => { %> 
+ <%= ticket.seat %> 
+<%= ticket.price %> 
+<% }) %>
+<form
+  method="POST"
+  action="/flights/<%= flight._id%>/new">
+  <input name="seat" required pattern="[A-F][1-9]\d?"/>
+  <input name="price" type="number" />
+  <input type="submit" value="Add Ticket">
+</form>
+<%- include('../partials/footer') %>
